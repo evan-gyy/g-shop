@@ -11,13 +11,13 @@
 ### Start
 
 ```bash
-npm start
+yarn start
 ```
 
 ### Build
 
 ```bash
-npm run build
+yarn build
 ```
 
 更多运行配置详见`package.json`
