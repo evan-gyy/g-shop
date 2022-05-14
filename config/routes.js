@@ -21,7 +21,19 @@ export default [
     path: '/dashboard',
     name: 'dashboard',
     icon: 'PieChartOutlined',
-    component: './DashBoard'
+    component: './DashBoard',
+  },
+  {
+    path: '/user',
+    name: 'user',
+    icon: 'UserOutlined',
+    component: './User',
+  },
+  {
+    path: '/goods',
+    name: 'goods',
+    icon: 'ShoppingOutlined',
+    component: './Goods',
   },
   {
     component: './404',

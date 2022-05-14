@@ -10,7 +10,7 @@ export default function Index() {
   useEffect(() => {
     const getData = async () => {
       let res = await fetchDashboard();
-      console.log(res);
+      // console.log(res);
       setData(res);
     };
     getData();

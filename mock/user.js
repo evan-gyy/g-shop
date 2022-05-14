@@ -1,3 +1,5 @@
+import Mock from 'mockjs';
+
 const waitTime = (time = 100) => {
   return new Promise((resolve) => {
     setTimeout(() => {
@@ -42,7 +44,7 @@ export default {
     res.send({
       success: true,
       data: {
-        name: 'Gyy',
+        name: 'evan-gyy',
         avatar: 'https://gw.alipayobjects.com/zos/antfincdn/XAosXuNZyF/BiazfanxmamNRoxxVxka.png',
         userid: '00000001',
         email: 'antdesign@alipay.com',
@@ -71,6 +73,24 @@ export default {
       address: 'Sidney No. 1 Lake Park',
     },
   ],
+
+  'GET /api/admin/users': Mock.mock({
+    'data|50-100': [
+      {
+        id: '@id',
+        avatar_url: '@email',
+        name: '@cname',
+        email: '@email',
+        'is_locked|1-2': true,
+        created_at: '@datetime',
+      },
+    ],
+  }),
+
+  'POST /api/admin/users': Mock.mock({
+    status: true,
+  }),
+
   'POST /api/login/account': async (req, res) => {
     const { password, username, type } = req.body;
     await waitTime(2000);

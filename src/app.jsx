@@ -21,10 +21,10 @@ export const initialStateConfig = {
 // request interceptor, change url or options.
 const requestInterceptors = (url, options) => {
   // console.log(options)
-  const token = 'hello'
+  const token = 'hello';
   const headers = {
-    Authorization: `Bearer ${token}`
-  }
+    Authorization: `Bearer ${token}`,
+  };
   return {
     url,
     options: { ...options, headers, interceptors: true },
@@ -37,9 +37,9 @@ const errorHandler = (error) => {
   if (response && response.status) {
     const errorText = codeMessage[response.status] || response.statusText;
     const { status, url } = response;
-    
-    const result = response.json()
-    console.log(result)
+
+    const result = response.json();
+    console.log(result);
 
     notification.error({
       message: `请求错误 ${status}: ${url}`,
@@ -118,6 +118,7 @@ export const layout = ({ initialState, setInitialState }) => {
           {children}
           {!props.location?.pathname?.includes('/login') && (
             <SettingDrawer
+              visible={false}
               disableUrlParams
               enableDarkTheme
               settings={initialState?.settings}
