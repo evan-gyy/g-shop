@@ -6,14 +6,17 @@ import ProForm, {
   ProFormTextArea,
   ProFormUploadButton,
 } from '@ant-design/pro-form';
-import { Modal, message, Cascader } from 'antd';
+import { Modal, message, Cascader, Form } from 'antd';
 import { addUser } from '@/services/user';
 import { getCategory } from '@/services/goods';
+import Editor from '@/components/Editor';
 
 export default function Create(props) {
   const { isModalVisible, showModal, actionRef } = props;
 
   const [options, setOptions] = useState([]);
+
+  const [formObj] = Form.useForm();
 
   useEffect(() => {
     const getCat = async () => {
@@ -32,6 +35,8 @@ export default function Create(props) {
     return label[label.length - 1];
   }
 
+  const setDetails = (content) => formObj.setFieldsValue({ details: content });
+
   /**
    * 添加商品
    */
@@ -49,6 +54,7 @@ export default function Create(props) {
   return (
     <Modal
       title="添加商品"
+      width={800}
       visible={isModalVisible}
       onOk={() => showModal(false)}
       onCancel={() => showModal(false)}
@@ -56,6 +62,7 @@ export default function Create(props) {
       destroyOnClose={true}
     >
       <ProForm
+        form={formObj}
         onFinish={async (values) => {
           createUser(values);
         }}
@@ -113,12 +120,19 @@ export default function Create(props) {
           max={99999999}
         />
         <ProFormUploadButton label="上传商品图" name="cover" action="upload.do" />
-        <ProFormTextArea
+        <ProForm.Item
+          name="details"
+          label="详情"
+          rules={[{ required: true, message: '请输入详情' }]}
+        >
+          <Editor setDetails={setDetails} />
+        </ProForm.Item>
+        {/* <ProFormTextArea
           name="details"
           label="详情"
           placeholder="请输入详情"
           rules={[{ required: true, message: '请输入详情' }]}
-        />
+        /> */}
       </ProForm>
     </Modal>
   );
