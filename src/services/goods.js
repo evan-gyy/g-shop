@@ -1,7 +1,7 @@
 import { request } from 'umi';
 
 /**
- * 获取用户数据
+ * 获取商品数据
  *
  * @returns
  */
@@ -15,16 +15,32 @@ export async function getGoods(params, options) {
 }
 
 /**
- * 添加用户
+ * 添加商品
  *
  * @param {*} params
  * @param {*} options
  * @returns
  */
-export async function addUser(params, options) {
+export async function addGoods(params, options) {
   // console.log(params)
   return request('/api/admin/users', {
     method: 'POST',
+    params: { ...params },
+    ...(options || {}),
+  });
+}
+
+/**
+ * 获取商品分类列表
+ *
+ * @param {*} params
+ * @param {*} options
+ * @returns
+ */
+export async function getCategory(params, options) {
+  // console.log(params)
+  return request('/api/admin/category', {
+    method: 'GET',
     params: { ...params },
     ...(options || {}),
   });

@@ -151,7 +151,7 @@ export default function Index() {
           onChange: (page) => console.log(page),
         }}
         dateFormatter="string"
-        headerTitle="用户列表"
+        headerTitle="商品列表"
         toolBarRender={() => [
           <Button
             key="button"
@@ -159,7 +159,7 @@ export default function Index() {
             type="primary"
             onClick={() => showModal(true)}
           >
-            新建
+            添加商品
           </Button>,
         ]}
       />

@@ -118,7 +118,7 @@ export default function Index() {
             type="primary"
             onClick={() => showModal(true)}
           >
-            新建
+            添加用户
           </Button>,
         ]}
       />
